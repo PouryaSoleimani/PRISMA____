@@ -60,7 +60,7 @@ async function main() {
     take: 10,
     skip: 1,
     orderBy: { age: "asc" },
-  });
+  }); 
 
   // const findFirstResult = await prisma.user.findFirst()
 
