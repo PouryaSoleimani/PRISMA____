@@ -22,3 +22,6 @@ model Post {
   title  String
   author String? @default("UNKNOWN AUTHOR")
 }
+
+// import {PrismaClient} from '@prisma/client'
+// const prisma = new PrismaClient()
