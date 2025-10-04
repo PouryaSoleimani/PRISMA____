@@ -4,20 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec tsx script.ts"
   },
   "keywords": [],
-  "author": "", 
+  "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
     "@types/node": "^24.6.2",
     "prisma": "^6.16.3",
+    "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "@prisma/client": "^6.16.3",
-    "@prisma/extension-accelerate": "^2.0.2"
+    "@prisma/extension-accelerate": "^2.0.2",
+    "nodemon": "^3.1.10"
   }
 }

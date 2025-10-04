@@ -5,12 +5,12 @@ async function main() {
   const result = await prisma.user.create({
     data: {
       age: 32,
-      email: "POURYA@GMAIL.COM",
+      email: "ALI2@GMAIL.COM",
       job: "DEVELOPER",
-      full_name: "POURYA SOLEIMANI",
-      isAdmin: true,
+      full_name: "ALI MOHAMMADi",
+      isAdmin: false,
     },
   });
-  console.log("MAIN FUNCTION RESULT =>", result);
+  console.log("MAIN FUNCTION RESULT ==>", result);
 }
 main();
