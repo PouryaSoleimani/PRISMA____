@@ -4,13 +4,13 @@ const prisma = new PrismaClient();
 async function main() {
   const result = await prisma.user.create({
     data: {
-      full_name: "POURYA SOLEIMANI",
       age: 32,
-      email: "POUYRYA@GMAIL.COM",
-      job: "FULL STACK DEVELOPER",
+      email: "POURYA@GMAIL.COM",
+      job: "DEVELOPER",
+      full_name: "POURYA SOLEIMANI",
+      isAdmin: true,
     },
   });
-  console.log("MAIN FUCNTION");
+  console.log("MAIN FUNCTION RESULT =>", result);
 }
-
 main();
