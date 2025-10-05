@@ -1,115 +1,91 @@
 import { PrismaClient } from "./generated/prisma/index.js";
 
-const prisma = new PrismaClient();
-async function main() {
-  //* CREATE
-  // const createResult = await prisma.user.create({})
+async function MainFunction() {
+  const prisma = new PrismaClient();
 
-  // const result = await prisma.user.createMany({
+  //^ FIND_MANY
+  const findManyResult = await prisma.user.findMany();
+
+  //^ FIND_UNIQUE
+  // const findUniqueResult = await prisma.user.findUnique({
+  //   where: {
+  //     id: 30,
+  //     full_name: "POURYA SOLEIMANI",
+  //   },
+  // });
+
+  //* CREATE
+  // const createResult = await prisma.user.create({
+  //   data: {
+  //     full_name: "ASHKAN HOSEINPOUR",
+  //     age: 32,
+  //     email: "ASHKAN@GMAIL.COM",
+  //     job: "REAL__STATE",
+  //     isAdmin: false,
+  //   },
+  // });
+
+  //* CREATE_MANY
+  // const createManyResult = await prisma.user.createManyAndReturn({
   //   data: [
   //     {
-  //       full_name: "SAEED MOHAMMADi",
+  //       full_name: "SHAHRIAR REYHANI",
   //       age: 32,
-  //       email: "saeed3asda2@GMAIL.COM",
-  //       job: "DESIGNER",
-  //       isAdmin: false,
-  //     },
-  //     {
-  //       full_name: "MAMAD YOUSEFI",
-  //       age: 23,
-  //       email: "mamad@GMAIL.COM",
-  //       job: "DESIGNER",
-  //       isAdmin: false,
-  //     },
-  //     {
-  //       full_name: "ASHKAN HOSEINI",
-  //       age: 32,
-  //       email: "ashkan@GMAIL.COM",
-  //       job: "REAL__STATE",
+  //       email: "SHAHRIAR2@GMAIL.COM",
+  //       job: "DEALER",
   //       isAdmin: false,
   //     },
   //     {
   //       full_name: "PARSA HOSEINI",
-  //       age: 27,
-  //       email: "parsa@GMAIL.COM",
+  //       age: 32,
+  //       email: "PARSA3@GMAIL.COM",
   //       job: "SELLER",
   //       isAdmin: false,
-  //     },
-  //     {
-  //       full_name: "HAMED MOUSAVI",
-  //       age: 27,
-  //       email: "hamed@GMAIL.COM",
-  //       job: "DEVELOPER",
-  //       isAdmin: false,
-  //     },
-  //     {
-  //       full_name: "POURYA SOLEIMANI",
-  //       age: 32,
-  //       email: "pourya@GMAIL.COM",
-  //       job: "DEVELOPER",
-  //       isAdmin: true,
   //     },
   //   ],
   // });
 
-  //^ FIND_MANY
-
-  //^ FIND
-  const findAllResult = await prisma.user.findMany({
-    select: { full_name: true, job: true },
-    take: 10,
-    skip: 1,
-    orderBy: { age: "asc" },
-  }); 
-
-  // const findFirstResult = await prisma.user.findFirst()
-
-  // const findResultMany = await prisma.user.findMany({
-  //   where: {
-  //     full_name: "POURYA SOLEIMANI",
-  //   },
-  //   take: 3,
-  //   skip: 1,
-  //   orderBy: {
-  //     age: "asc",
-  //   },
-  // });
-
-  // const findUniqueResult = await prisma.user.findUnique({
-  //   where: {
-  //     id: 7,
-  //   },
-  //   select: { full_name: true, age: true },
-  // });
-
-  // ~ UPDATE
-  // const updateResult = await prisma.user.update({
-  //   where: { id: 3 },
+  // const createResult = await prisma.user.create({
   //   data: {
   //     full_name: "POURYA SOLEIMANI",
+  //     age: 32,
+  //     email: "POURYA@GMAIL.COM",
+  //     job: "FULL_STACK_DEVELOPER",
+  //     isAdmin: true,
   //   },
   // });
 
-  //~ UPDATE MANY
-  // const updatedManyResult = await prisma.user.updateMany({
-  //   where: { full_name: "SAEED MOHAMMADi" },
-  //   data: { full_name: "POURYA SOLEIMANI" },
-  // });
-
-  // ! DELETE
+  //! DELETE
   // const deleteResult = await prisma.user.delete({
   //   where: {
-  //     id: 4,
+  //     id: 33,
   //   },
   // });
 
-  // ! DELETE__MANY
+  //! DELETE__MANY
   // const deleteManyResult = await prisma.user.deleteMany({
   //   where: {
-  //     id: 4,
+  //     isAdmin: false,
   //   },
   // });
 
-  console.log("FIND RESULT MANY ==>", findAllResult);
+  //~ UPDATE
+  const updateResult = await prisma.user.update({
+    where: { id: 41 },
+    data: { full_name: "AMIRHOSEIN PARSAFAR" },
+  });
+
+  //~ UPDATE__MANY
+  const updateManyResult = await prisma.user.updateManyAndReturn({
+    where: { isAdmin: false },
+    data: { isAdmin: true },
+  });
+
+  if (updateManyResult) {
+    console.log("RESULT", updateManyResult);
+  } else {
+    console.log("FAILED");
+  }
 }
-main();
+
+// MainFunction();
