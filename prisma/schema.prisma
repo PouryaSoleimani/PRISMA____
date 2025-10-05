@@ -15,10 +15,27 @@ model User {
   email     String   @unique
   job       String
   isAdmin   Boolean?
+  Post      Post[]
 }
 
 model Post {
   id     Int     @id @default(autoincrement())
   title  String
   author String? @default("UNKNOWN AUTHOR")
+  userId Int     @unique
+  user   User    @relation(fields: [userId], references: [id])
+}
+
+model Category {
+  id      Int       @id @default(autoincrement())
+  title   String
+  Product Product[]
+}
+
+model Product {
+  id         Int      @id @default(autoincrement())
+  title      String
+  price      Int
+  categoryId Int      @unique
+  category   Category @relation(fields: [categoryId], references: [id])
 }
