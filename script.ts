@@ -110,17 +110,26 @@ async function MainFunction() {
   //   },
   // });
 
-  const result = await prisma.post.create({
-    data: {
-      title: "POST 3",
-      body: "LOREM LOREM LOREM",
-      userId: 1,
-    },
-  });
+  // * CREATE + RELATION -> ONE-TO-ONE
+  // const RESULT = await prisma.user.create({
+  //   data: {
+  //     full_name: "POST 3",
+  //     age: 22,
+  //     email: "G@GMAIasdasdL>COM",
+  //     job: "adasdasd",
+  //     isAdmin: true,
+  //     post: {
+  //       create: {
+  //         title: "POST 222",
+  //         body: "LOREM",
+  //       },
+  //     },
+  //   },
+  // });
 
   //^ INCLUDE
-  // const result = await prisma.post.findMany({ include: { user: true } });
-  // console.log("RESULT ===> ", result);
+  const RESULT = await prisma.post.findMany({ include: { user: true } });
+  console.log("RESULT ===> ", RESULT);
 }
 
 // MainFunction();

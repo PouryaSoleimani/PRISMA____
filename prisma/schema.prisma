@@ -14,7 +14,7 @@ model User {
   age       Int
   email     String   @unique
   job       String
-  isAdmin   Boolean?
+  isAdmin   Boolean? @default(value: true)
   post      Post?
 }
 
