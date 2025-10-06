@@ -117,6 +117,8 @@ async function MainFunction() {
       userId: 1,
     },
   });
+
+  //^ INCLUDE
   // const result = await prisma.post.findMany({ include: { user: true } });
   // console.log("RESULT ===> ", result);
 }
