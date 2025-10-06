@@ -70,22 +70,32 @@ async function MainFunction() {
   // });
 
   //~ UPDATE
-  const updateResult = await prisma.user.update({
-    where: { id: 41 },
-    data: { full_name: "AMIRHOSEIN PARSAFAR" },
-  });
+  // const updateResult = await prisma.user.update({
+  //   where: { id: 41 },
+  //   data: { full_name: "AMIRHOSEIN PARSAFAR" },
+  // });
 
   //~ UPDATE__MANY
-  const updateManyResult = await prisma.user.updateManyAndReturn({
-    where: { isAdmin: false },
-    data: { isAdmin: true },
-  });
+  // const updateManyResult = await prisma.user.updateManyAndReturn({
+  //   where: { isAdmin: false },
+  //   data: { isAdmin: true },
+  // });
 
-  if (updateManyResult) {
-    console.log("RESULT", updateManyResult);
-  } else {
-    console.log("FAILED");
-  }
+  // const PostCreateResult = await prisma.post.create({
+  //   data: {
+  //     title: "POST 1",
+  //     author: "POURYA SOLEIMANI",
+  //     userId: 1,
+  //   },
+  // });
+
+  // const PostCreateResult = await prisma.post.deleteMany({});
+  const findManyUserResult = await prisma.post.findMany({
+    include: {
+      user: true,
+    },
+  });
+  console.log("RESULT ===> ", findManyUserResult);
 }
 
-// MainFunction();
+MainFunction();

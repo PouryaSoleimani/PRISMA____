@@ -15,7 +15,7 @@ model User {
   email     String   @unique
   job       String
   isAdmin   Boolean?
-  Post      Post[]
+  post      Post[]
 }
 
 model Post {
@@ -38,4 +38,17 @@ model Product {
   price      Int
   categoryId Int      @unique
   category   Category @relation(fields: [categoryId], references: [id])
+}
+
+model Article {
+  id     Int      @id @default(autoincrement())
+  title  String
+  Author Author[]
+}
+
+model Author {
+  id        Int     @id @default(autoincrement())
+  full_name String
+  articleId Int     @unique
+  artice    Article @relation(fields: [articleId], references: [id])
 }
