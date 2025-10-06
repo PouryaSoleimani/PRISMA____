@@ -90,12 +90,35 @@ async function MainFunction() {
   // });
 
   // const PostCreateResult = await prisma.post.deleteMany({});
-  const findManyUserResult = await prisma.post.findMany({
-    include: {
-      user: true,
+
+  // const findManyUserResult = await prisma.post.findMany({
+  //   include: {
+  //     user: true,
+  //   },
+  // });
+
+  // const userResult = await prisma.user.create({
+  //   data: {
+  //     full_name: "MOHAMMAD YOUSEFI",
+  //     age: 24,
+  //     email: "MAMAD@GMAIL.COM",
+  //     job: "GENERAL__ARTIST",
+  //     isAdmin: true,
+  //     Post: {
+  //       create: { title: " MOHAMMAD POST ", author: "MOHAMMAD Y" },
+  //     },
+  //   },
+  // });
+
+  const result = await prisma.post.create({
+    data: {
+      title: "POST 3",
+      body: "LOREM LOREM LOREM",
+      userId: 1,
     },
   });
-  console.log("RESULT ===> ", findManyUserResult);
+  // const result = await prisma.post.findMany({ include: { user: true } });
+  // console.log("RESULT ===> ", result);
 }
 
-MainFunction();
+// MainFunction();

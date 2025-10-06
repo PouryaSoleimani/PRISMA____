@@ -15,21 +15,21 @@ model User {
   email     String   @unique
   job       String
   isAdmin   Boolean?
-  post      Post[]
+  post      Post?
 }
 
 model Post {
   id     Int     @id @default(autoincrement())
   title  String
-  author String? @default("UNKNOWN AUTHOR")
   userId Int     @unique
+  body   String? @default("LOREM IPSUM")
   user   User    @relation(fields: [userId], references: [id])
 }
 
 model Category {
-  id      Int       @id @default(autoincrement())
+  id      Int      @id @default(autoincrement())
   title   String
-  Product Product[]
+  Product Product?
 }
 
 model Product {
@@ -41,9 +41,9 @@ model Product {
 }
 
 model Article {
-  id     Int      @id @default(autoincrement())
+  id     Int     @id @default(autoincrement())
   title  String
-  Author Author[]
+  Author Author?
 }
 
 model Author {
