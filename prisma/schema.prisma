@@ -13,13 +13,15 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
   full_name String
-  Blog      Blog[]
+  Blog      Blog?    @relation(fields: [blogId], references: [id])
+  blogId    Int?
 }
 
 model Blog {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
-  userId    Int
+  userId    Int      @unique
   user      User[]
 }
+ 
