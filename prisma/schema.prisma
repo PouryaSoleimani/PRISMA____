@@ -10,45 +10,16 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  full_name String   @default("UNKNOWN USER")
-  age       Int
-  email     String   @unique
-  job       String
-  isAdmin   Boolean? @default(value: true)
-  post      Post?
-}
-
-model Post {
-  id     Int     @id @default(autoincrement())
-  title  String
-  body   String? @default("LOREM IPSUM")
-  userId Int     @unique
-  user   User    @relation(fields: [userId], references: [id])
-}
-
-model Category {
-  id      Int      @id @default(autoincrement())
-  title   String
-  Product Product?
-}
-
-model Product {
-  id         Int      @id @default(autoincrement())
-  title      String
-  price      Int
-  categoryId Int      @unique
-  category   Category @relation(fields: [categoryId], references: [id])
-}
-
-model Article {
-  id     Int     @id @default(autoincrement())
-  title  String
-  Author Author?
-}
-
-model Author {
-  id        Int     @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
   full_name String
-  articleId Int     @unique
-  artice    Article @relation(fields: [articleId], references: [id])
+  Blog      Blog[]
+}
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+  userId    Int
+  user      User[]
 }
