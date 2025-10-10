@@ -1,4 +1,5 @@
 import { PrismaClient } from "./generated/prisma/index.js";
+const name: string = "ALI";
 
 async function MainFunction() {
   const prisma = new PrismaClient();
